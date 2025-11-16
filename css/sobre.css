@@ -272,6 +272,118 @@
   flex-wrap: wrap;
 }
 
+/* --- Estilos do Modal da Equipe --- */
+
+/* Faz o card da equipe parecer clicável */
+.team-member {
+  cursor: pointer;
+  /* (o resto dos seus estilos .team-member continua aqui) */
+}
+
+/* O fundo escuro que cobre a tela */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex; /* Usamos flex para centralizar o modal */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  /* Começa invisível */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Classe que o JS vai adicionar para mostrar o modal */
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* A caixa branca do pop-up */
+.modal-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+
+  /* Animação de entrada */
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+  transform: scale(1);
+}
+
+/* Botão de fechar (X) */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Estilizando o conteúdo de dentro do modal */
+.modal-content #modalAvatar {
+  font-size: 4rem; /* Avatar maior */
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.modal-content #modalName {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.modal-content #modalRole {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.modal-content #modalBio {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.modal-socials {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.modal-socials a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.modal-socials a:hover {
+  color: var(--primary-color);
+}
+
 /* Responsive Design - Sobre */
 @media (max-width: 768px) {
   .about-intro {

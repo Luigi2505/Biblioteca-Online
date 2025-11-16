@@ -12,7 +12,6 @@
   padding: 2rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  position: sticky;
   top: 100px;
 }
 
