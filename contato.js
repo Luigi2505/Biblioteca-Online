@@ -338,25 +338,3 @@ function clearAllErrors() {
     error.previousElementSibling.style.borderColor = "";
   });
 }
-
-/**
- * Adiciona animações
- */
-const style = document.createElement("style");
-style.textContent = `
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .contact-message {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-`;
-document.head.appendChild(style);

@@ -228,18 +228,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Responsive Design (Index) */
 @media (max-width: 768px) {
   .content {
