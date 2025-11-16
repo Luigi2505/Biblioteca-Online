@@ -1,132 +1,25 @@
 /**
  * Página Contato - Biblioteca Online
- * Funcionalidades do formulário de contato e interações
+ * Versão Simplificada
  */
 
 // Elementos do DOM
 const contactForm = document.getElementById("contactForm");
-const submitBtn = document.getElementById("submitContactBtn");
 const clearBtn = document.getElementById("clearContactBtn");
-
-// Campos do formulário
-const nameInput = document.getElementById("contactName");
-const emailInput = document.getElementById("contactEmail");
-const phoneInput = document.getElementById("contactPhone");
-const subjectSelect = document.getElementById("contactSubject");
-const messageTextarea = document.getElementById("contactMessage");
-const newsletterCheckbox = document.getElementById("contactNewsletter");
-
-// Mensagens de erro
-const nameError = document.getElementById("nameError");
-const emailError = document.getElementById("emailError");
-const phoneError = document.getElementById("phoneError");
-const subjectError = document.getElementById("subjectError");
-const messageError = document.getElementById("messageError");
 
 // Inicialização
 document.addEventListener("DOMContentLoaded", () => {
-  setupFormValidation();
   setupPhoneMask();
   setupFormSubmission();
   setupClearForm();
-  setupSocialLinks();
 });
-
-/**
- * Configura validação do formulário
- */
-function setupFormValidation() {
-  // Validação em tempo real
-  nameInput.addEventListener("blur", () => validateName());
-  emailInput.addEventListener("blur", () => validateEmail());
-  phoneInput.addEventListener("blur", () => validatePhone());
-  subjectSelect.addEventListener("change", () => validateSubject());
-  messageTextarea.addEventListener("blur", () => validateMessage());
-
-  // Limpar erros ao digitar
-  nameInput.addEventListener("input", () => clearError(nameError));
-  emailInput.addEventListener("input", () => clearError(emailError));
-  phoneInput.addEventListener("input", () => clearError(phoneError));
-  messageTextarea.addEventListener("input", () => clearError(messageError));
-}
-
-/**
- * Validação do nome
- */
-function validateName() {
-  const name = nameInput.value.trim();
-  if (name.length < 3) {
-    showError(nameError, "O nome deve ter pelo menos 3 caracteres");
-    return false;
-  }
-  clearError(nameError);
-  return true;
-}
-
-/**
- * Validação do e-mail
- */
-function validateEmail() {
-  const email = emailInput.value.trim();
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!email) {
-    showError(emailError, "O e-mail é obrigatório");
-    return false;
-  }
-
-  if (!emailRegex.test(email)) {
-    showError(emailError, "Digite um e-mail válido");
-    return false;
-  }
-
-  clearError(emailError);
-  return true;
-}
-
-/**
- * Validação do telefone
- */
-function validatePhone() {
-  const phone = phoneInput.value.trim();
-  if (phone && !/^(\(\d{2}\)\s?\d{4,5}-\d{4})$/.test(phone)) {
-    showError(phoneError, "Digite um telefone válido");
-    return false;
-  }
-  clearError(phoneError);
-  return true;
-}
-
-/**
- * Validação do assunto
- */
-function validateSubject() {
-  const subject = subjectSelect.value;
-  if (!subject) {
-    showError(subjectError, "Selecione um assunto");
-    return false;
-  }
-  clearError(subjectError);
-  return true;
-}
-
-/**
- * Validação da mensagem
- */
-function validateMessage() {
-  const message = messageTextarea.value.trim();
-  if (message.length < 10) {
-    showError(messageError, "A mensagem deve ter pelo menos 10 caracteres");
-    return false;
-  }
-  clearError(messageError);
-  return true;
-}
 
 /**
  * Configura máscara de telefone
  */
 function setupPhoneMask() {
+  const phoneInput = document.getElementById("contactPhone");
+  
   phoneInput.addEventListener("input", (e) => {
     let value = e.target.value.replace(/\D/g, "");
 
@@ -135,10 +28,7 @@ function setupPhoneMask() {
     } else if (value.length <= 7) {
       value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
     } else {
-      value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(
-        7,
-        11
-      )}`;
+      value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
     }
 
     e.target.value = value;
@@ -152,48 +42,38 @@ function setupFormSubmission() {
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Validar todos os campos
-    const isNameValid = validateName();
-    const isEmailValid = validateEmail();
-    const isPhoneValid = validatePhone();
-    const isSubjectValid = validateSubject();
-    const isMessageValid = validateMessage();
+    // Validar campos obrigatórios
+    const name = document.getElementById("contactName").value.trim();
+    const email = document.getElementById("contactEmail").value.trim();
+    const subject = document.getElementById("contactSubject").value;
+    const message = document.getElementById("contactMessage").value.trim();
 
-    if (
-      !isNameValid ||
-      !isEmailValid ||
-      !isPhoneValid ||
-      !isSubjectValid ||
-      !isMessageValid
-    ) {
-      showMessage("Por favor, corrija os erros no formulário", "error");
+    if (!name || !email || !subject || message.length < 10) {
+      showMessage("Por favor, preencha todos os campos obrigatórios", "error");
+      return;
+    }
+
+    // Validar e-mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showMessage("Digite um e-mail válido", "error");
       return;
     }
 
     // Desabilitar botão e mostrar loading
+    const submitBtn = document.getElementById("submitContactBtn");
     submitBtn.disabled = true;
     submitBtn.innerHTML = "Enviando...";
 
     try {
-      // Simular envio (em um projeto real, aqui seria uma chamada API)
-      await simulateFormSubmission();
-
-      // Mostrar mensagem de sucesso
-      showMessage(
-        "Mensagem enviada com sucesso! Entraremos em contato em breve.",
-        "success"
-      );
-
-      // Limpar formulário
-      clearFormFields();
-
-      // Salvar no localStorage (simulação)
-      saveContactData();
+      // Simular envio
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      showMessage("Mensagem enviada com sucesso! Entraremos em contato em breve.", "success");
+      contactForm.reset();
+      
     } catch (error) {
-      showMessage(
-        "Erro ao enviar mensagem. Tente novamente mais tarde.",
-        "error"
-      );
+      showMessage("Erro ao enviar mensagem. Tente novamente.", "error");
     } finally {
       // Reabilitar botão
       submitBtn.disabled = false;
@@ -203,63 +83,23 @@ function setupFormSubmission() {
 }
 
 /**
- * Simula envio do formulário
- */
-function simulateFormSubmission() {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  });
-}
-
-/**
- * Salva dados do contato no localStorage
- */
-function saveContactData() {
-  const contactData = {
-    name: nameInput.value.trim(),
-    email: emailInput.value.trim(),
-    phone: phoneInput.value.trim(),
-    subject: subjectSelect.value,
-    message: messageTextarea.value.trim(),
-    newsletter: newsletterCheckbox.checked,
-    timestamp: new Date().toISOString(),
-  };
-
-  // Salvar no localStorage
-  let contacts = JSON.parse(localStorage.getItem("contacts") || "[]");
-  contacts.push(contactData);
-  localStorage.setItem("contacts", JSON.stringify(contacts));
-}
-
-/**
  * Configura botão de limpar formulário
  */
 function setupClearForm() {
   clearBtn.addEventListener("click", () => {
     if (confirm("Tem certeza que deseja limpar todos os campos?")) {
-      clearFormFields();
+      contactForm.reset();
       showMessage("Formulário limpo com sucesso", "info");
     }
   });
 }
 
 /**
- * Limpa todos os campos do formulário
- */
-function clearFormFields() {
-  contactForm.reset();
-  clearAllErrors();
-}
-
-/**
- * Abre mapa externo
+ * Abre mapa externo da PUCPR
  */
 function openMap() {
-  showMessage("Abrindo no Google Maps...", "info");
-  // Em um projeto real, aqui abriria o endereço real
-  setTimeout(() => {
-    showMessage("Mapa simulado - em produção abriria o endereço real", "info");
-  }, 1000);
+  window.open("https://www.google.com/maps/place/PUCPR", "_blank");
+  showMessage("Abrindo localização da PUCPR no Google Maps...", "info");
 }
 
 /**
@@ -277,30 +117,16 @@ function showMessage(message, type = "info") {
   messageDiv.className = `contact-message ${type}`;
   messageDiv.textContent = message;
 
-  // Adicionar estilos
+  // Estilos básicos
   messageDiv.style.cssText = `
-        padding: 1rem;
-        margin: 1rem 0;
-        border-radius: 8px;
-        font-weight: 500;
-        animation: slideDown 0.3s ease-out;
-    `;
-
-  // Definir cores
-  switch (type) {
-    case "success":
-      messageDiv.style.backgroundColor = "#10b981";
-      messageDiv.style.color = "white";
-      break;
-    case "error":
-      messageDiv.style.backgroundColor = "#ef4444";
-      messageDiv.style.color = "white";
-      break;
-    case "info":
-      messageDiv.style.backgroundColor = "#3b82f6";
-      messageDiv.style.color = "white";
-      break;
-  }
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    font-weight: 500;
+    animation: slideDown 0.3s ease-out;
+    background-color: ${type === "success" ? "#10b981" : type === "error" ? "#ef4444" : "#3b82f6"};
+    color: white;
+  `;
 
   // Inserir após o formulário
   contactForm.insertAdjacentElement("afterend", messageDiv);
@@ -311,30 +137,18 @@ function showMessage(message, type = "info") {
   }, 5000);
 }
 
-/**
- * Mostra erro
- */
-function showError(element, message) {
-  element.textContent = message;
-  element.style.display = "block";
-  element.previousElementSibling.style.borderColor = "#ef4444";
-}
-
-/**
- * Limpa erro
- */
-function clearError(element) {
-  element.style.display = "none";
-  element.previousElementSibling.style.borderColor = "";
-}
-
-/**
- * Limpa todos os erros
- */
-function clearAllErrors() {
-  const errors = document.querySelectorAll(".error-message");
-  errors.forEach((error) => {
-    error.style.display = "none";
-    error.previousElementSibling.style.borderColor = "";
-  });
-}
+// Adicionar animação CSS
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+document.head.appendChild(style);
