@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalSocials.appendChild(linkElement);
       }
 
-      // Verifica se o link do Twitter existe
+      // Verifica se o link do Instagram existe
       if (instagram) {
         const linkElement = document.createElement("a");
         linkElement.href = instagram;
