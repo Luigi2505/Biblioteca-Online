@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="contactMessage">Mensagem *</label>
+                  <label for="contactMessage">Mensagem</label>
                   <textarea
                     id="contactMessage"
                     name="message"
@@ -144,8 +144,8 @@
                 <div class="contact-item">
                   <div class="contact-details">
                     <h4>Telefone</h4>
-                    <p>(11) 3456-7890</p>
-                    <p>WhatsApp: (11) 98765-4321</p>
+                    <p>(41) 3456-7890</p>
+                    <p>WhatsApp: (41) 98765-4321</p>
                   </div>
                 </div>
 
@@ -153,7 +153,7 @@
                   <div class="contact-details">
                     <h4>Endereço</h4>
                     <p>Rua das Letras, 123</p>
-                    <p>Bairro Literário - São Paulo/SP</p>
+                    <p>Bairro Parolin  - Curitiba/PR</p>
                     <p>CEP: 01234-567</p>
                   </div>
                 </div>
@@ -231,22 +231,22 @@
 
           <div class="map-section">
             <h3>Onde Estamos</h3>
-            <div class="map-placeholder">
-              <div class="map-content">
-                <section class="maps">
-                  <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.238258995987!2d-49.26746792437429!3d-25.45626897750022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce47a5b46fa2d%3A0xea8b7a8b13c0c8b7!2sPUCPR%20-%20Pontif%C3%ADcia%20Universidade%20Cat%C3%B3lica%20do%20Paran%C3%A1!5e0!3m2!1spt-BR!2sbr!4v1699123456789!5m2!1spt-BR!2sbr"
-  width="100%" 
-  height="400" 
-  style="border:0; border-radius: var(--radius-lg);" 
-  allowfullscreen="" 
-  loading="lazy">
-</iframe>
-                </section>
-                <button class="btn btn-primary btn-small" onclick="openMap()">
-                  Abrir no Google Maps
-                </button>
-              </div>
+            <div class="map-container">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.238258995987!2d-49.26746792437429!3d-25.45626897750022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce47a5b46fa2d%3A0xea8b7a8b13c0c8b7!2sPUCPR%20-%20Pontif%C3%ADcia%20Universidade%20Cat%C3%B3lica%20do%20Paran%C3%A1!5e0!3m2!1spt-BR!2sbr!4v1699123456789!5m2!1spt-BR!2sbr" 
+                width="100%" 
+                height="400" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Localização da PUCPR">
+              </iframe>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+              <button class="btn btn-primary btn-small" onclick="openMap()">
+                Abrir no Google Maps
+              </button>
             </div>
           </div>
         </section>
@@ -255,7 +255,7 @@
 
     <footer class="footer">
       <div class="container">
-        <p>© 2025 Biblioteca Online. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Biblioteca Online. Todos os direitos reservados.</p>
       </div>
     </footer>
 
