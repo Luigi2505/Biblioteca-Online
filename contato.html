@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato - Biblioteca Online</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/contato.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo">Biblioteca Online</h1>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Início</a>
+          <a href="catalogo.html" class="nav-link">Catálogo</a>
+          <a href="sobre.html" class="nav-link">Sobre</a>
+          <a href="contato.html" class="nav-link active">Contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="hero">
+          <h2>Entre em Contato</h2>
+          <p>
+            Estamos aqui para ajudar! Fale conosco através de qualquer um dos
+            nossos canais.
+          </p>
+        </section>
+
+        <section class="contact-content">
+          <div class="contact-grid">
+            <div class="contact-form-section">
+              <h3>Envie-nos uma Mensagem</h3>
+              <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                  <label for="contactName">Nome Completo *</label>
+                  <input type="text" id="contactName" name="name" required />
+                  <span class="error-message" id="nameError"
+                    >O nome é obrigatório</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="contactEmail">E-mail *</label>
+                  <input type="email" id="contactEmail" name="email" required />
+                  <span class="error-message" id="emailError"
+                    >Digite um e-mail válido</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="contactPhone">Telefone</label>
+                  <input
+                    type="tel"
+                    id="contactPhone"
+                    name="phone"
+                    placeholder="(00) 00000-0000"
+                  />
+                  <span class="error-message" id="phoneError"
+                    >Digite um telefone válido</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="contactSubject">Assunto *</label>
+                  <select id="contactSubject" name="subject" required>
+                    <option value="">Selecione um assunto</option>
+                    <option value="duvida">Dúvida</option>
+                    <option value="sugestao">Sugestão</option>
+                    <option value="reclamacao">Reclamação</option>
+                    <option value="suporte">Suporte Técnico</option>
+                    <option value="parceria">Parceria</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                  <span class="error-message" id="subjectError"
+                    >Selecione um assunto</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="contactMessage">Mensagem *</label>
+                  <textarea
+                    id="contactMessage"
+                    name="message"
+                    rows="6"
+                    required
+                    minlength="10"
+                  ></textarea>
+                  <span class="error-message" id="messageError"
+                    >A mensagem deve ter pelo menos 10 caracteres</span
+                  >
+                </div>
+
+                <div class="form-group checkbox-group">
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      id="contactNewsletter"
+                      name="newsletter"
+                    />
+                    <span class="checkmark"></span>
+                    Deseja receber nossa newsletter?
+                  </label>
+                </div>
+
+                <div class="form-actions">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="submitContactBtn"
+                  >
+                    Enviar Mensagem
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="clearContactBtn"
+                  >
+                    Limpar Formulário
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="contact-info-section">
+              <div class="contact-info-card">
+                <h3>Informações de Contato</h3>
+
+                <div class="contact-item">
+                  <div class="contact-details">
+                    <h4>E-mail</h4>
+                    <p>contato@bibliotecaonline.com</p>
+                    <p>suporte@bibliotecaonline.com</p>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-details">
+                    <h4>Telefone</h4>
+                    <p>(11) 3456-7890</p>
+                    <p>WhatsApp: (11) 98765-4321</p>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-details">
+                    <h4>Endereço</h4>
+                    <p>Rua das Letras, 123</p>
+                    <p>Bairro Literário - São Paulo/SP</p>
+                    <p>CEP: 01234-567</p>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-details">
+                    <h4>Horário de Atendimento</h4>
+                    <p>Segunda a Sexta: 8h - 18h</p>
+                    <p>Sábado: 9h - 13h</p>
+                    <p>Domingo: Fechado</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="social-media-card">
+                <h3>Redes Sociais</h3>
+                <p>
+                  Siga-nos nas redes sociais para ficar por dentro das
+                  novidades!
+                </p>
+
+                <div class="social-links">
+                  <a
+                    href="https://www.facebook.com"
+                    class="social-link facebook"
+                  >
+                    <span>Facebook</span>
+                  </a>
+                  <a
+                    href="https://www.instagram.com"
+                    class="social-link instagram"
+                  >
+                    <span>Instagram</span>
+                  </a>
+                  <a href="https://www.x.com" class="social-link twitter">
+                    <span>Twitter</span>
+                  </a>
+                  <a href="https://www.youtube.com" class="social-link youtube">
+                    <span>YouTube</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com"
+                    class="social-link linkedin"
+                  >
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="faq-card">
+                <h3>Perguntas Frequentes</h3>
+                <div class="faq-item">
+                  <h4>Como faço para me cadastrar?</h4>
+                  <p>
+                    O cadastro é gratuito e pode ser feito diretamente em nosso
+                    site.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h4>Quais são os planos disponíveis?</h4>
+                  <p>
+                    Oferecemos planos gratuitos e premium com diferentes
+                    benefícios.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h4>Como posso solicitar um livro?</h4>
+                  <p>
+                    Através do catálogo ou formulário de solicitação online.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-section">
+            <h3>Onde Estamos</h3>
+            <div class="map-placeholder">
+              <div class="map-content">
+                <div class="map-icon">🗺️</div>
+                <h4>Mapa Interativo</h4>
+                <p>Nossa localização exata no centro de São Paulo</p>
+                <button class="btn btn-primary btn-small" onclick="openMap()">
+                  Abrir no Google Maps
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Biblioteca Online. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="contato.js"></script>
+  </body>
+</html>

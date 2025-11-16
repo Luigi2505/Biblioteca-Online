@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Online - Sistema de Gerenciamento</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo">📚 Biblioteca Online</h1>
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Início</a>
+          <a href="catalogo.html" class="nav-link">Catálogo</a>
+          <a href="sobre.html" class="nav-link">Sobre</a>
+          <a href="contato.html" class="nav-link">Contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="hero">
+          <h2>Sistema de Gerenciamento de Livros</h2>
+          <p>Adicione, edite e gerencie o acervo da biblioteca</p>
+        </section>
+
+        <section class="content">
+          <div class="form-section">
+            <h3 id="formTitle">Adicionar Novo Livro</h3>
+            <form id="bookForm" class="book-form">
+              <input type="hidden" id="bookId" value="" />
+
+              <div class="form-group">
+                <label for="bookTitle">Título do Livro *</label>
+                <input
+                  type="text"
+                  id="bookTitle"
+                  name="title"
+                  required
+                  minlength="3"
+                />
+                <span class="error-message" id="titleError"
+                  >O título deve ter pelo menos 3 caracteres</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="bookAuthor">Autor *</label>
+                <input type="text" id="bookAuthor" name="author" required />
+                <span class="error-message" id="authorError"
+                  >O autor é obrigatório</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="bookYear">Ano de Publicação</label>
+                <input
+                  type="number"
+                  id="bookYear"
+                  name="year"
+                  min="1000"
+                  max="2024"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="bookGenre">Gênero</label>
+                <select id="bookGenre" name="genre">
+                  <option value="">Selecione um gênero</option>
+                  <option value="ficcao">Ficção</option>
+                  <option value="nao-ficcao">Não-ficção</option>
+                  <option value="biografia">Biografia</option>
+                  <option value="tecnico">Técnico</option>
+                  <option value="infantil">Infantil</option>
+                  <option value="poesia">Poesia</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bookDescription">Descrição</label>
+                <textarea
+                  id="bookDescription"
+                  name="description"
+                  rows="4"
+                ></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                  Adicionar Livro
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  id="cancelBtn"
+                  style="display: none"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="list-section">
+            <div class="list-header">
+              <h3>Livros Cadastrados</h3>
+              <div class="search-box">
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Buscar livros..."
+                />
+                <button class="btn btn-small" id="searchBtn">🔍</button>
+              </div>
+            </div>
+
+            <div id="loadingMessage" class="loading-message">
+              <p>Carregando livros...</p>
+            </div>
+
+            <div
+              id="errorMessage"
+              class="error-message-box"
+              style="display: none"
+            >
+              <p>Erro ao carregar os livros. Tente novamente.</p>
+            </div>
+
+            <div
+              id="successMessage"
+              class="success-message-box"
+              style="display: none"
+            >
+              <p id="successText">Operação realizada com sucesso!</p>
+            </div>
+
+            <div id="booksList" class="books-grid">
+              <!-- Livros serão inseridos aqui dinamicamente -->
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none">
+              <p>Nenhum livro cadastrado ainda.</p>
+              <p>Adicione seu primeiro livro usando o formulário ao lado.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Biblioteca Online. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

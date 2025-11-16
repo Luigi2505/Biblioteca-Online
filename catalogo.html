@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de Livros - Biblioteca Online</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/catalogo.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo">Biblioteca Online</h1>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Início</a>
+          <a href="catalogo.html" class="nav-link active">Catálogo</a>
+          <a href="sobre.html" class="nav-link">Sobre</a>
+          <a href="contato.html" class="nav-link">Contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="hero">
+          <h2>Catálogo Completo</h2>
+          <p>Explore todo o acervo disponível na biblioteca</p>
+        </section>
+
+        <section class="catalog-filters">
+          <div class="filter-header">
+            <h3>Filtrar por Gênero</h3>
+            <button class="btn btn-small" id="clearFilters">
+              Limpar Filtros
+            </button>
+          </div>
+
+          <div class="genre-filters">
+            <button class="genre-filter active" data-genre="all">Todos</button>
+            <button class="genre-filter" data-genre="ficcao">Ficção</button>
+            <button class="genre-filter" data-genre="nao-ficcao">
+              Não-ficção
+            </button>
+            <button class="genre-filter" data-genre="biografia">
+              Biografia
+            </button>
+            <button class="genre-filter" data-genre="tecnico">Técnico</button>
+            <button class="genre-filter" data-genre="infantil">Infantil</button>
+            <button class="genre-filter" data-genre="poesia">Poesia</button>
+          </div>
+
+          <div class="search-section">
+            <div class="search-box">
+              <input
+                type="text"
+                id="catalogSearch"
+                placeholder="Buscar livros, autores..."
+              />
+              <button class="btn btn-small" id="searchCatalogBtn">🔍</button>
+            </div>
+
+            <div class="sort-options">
+              <label for="sortSelect">Ordenar por:</label>
+              <select id="sortSelect">
+                <option value="title">Título (A-Z)</option>
+                <option value="author">Autor (A-Z)</option>
+                <option value="year">Ano (Mais recente)</option>
+                <option value="year-desc">Ano (Mais antigo)</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="catalog-content">
+          <div class="catalog-stats">
+            <div class="stat-item">
+              <span class="stat-number" id="totalBooks">0</span>
+              <span class="stat-label">Total de Livros</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="totalAuthors">0</span>
+              <span class="stat-label">Autores</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="totalGenres">0</span>
+              <span class="stat-label">Gêneros</span>
+            </div>
+          </div>
+
+          <div id="catalogLoading" class="loading-message">
+            <p>Carregando catálogo...</p>
+          </div>
+
+          <div
+            id="catalogError"
+            class="error-message-box"
+            style="display: none"
+          >
+            <p>Erro ao carregar o catálogo. Tente novamente.</p>
+          </div>
+
+          <div id="catalogBooks" class="catalog-grid"></div>
+
+          <div id="catalogEmpty" class="empty-state" style="display: none">
+            <p>Nenhum livro encontrado com os filtros selecionados.</p>
+            <p>Tente ajustar os filtros ou buscar por outros termos.</p>
+          </div>
+
+          <div class="pagination" id="pagination"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2025 Biblioteca Online. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="catalogo.js"></script>
+  </body>
+</html>
