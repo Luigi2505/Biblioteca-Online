@@ -1,17 +1,21 @@
 /* index.css - Estilos da Página Inicial (Gerenciamento) */
+
+/* Layout principal de 2 colunas: 1fr (Formulário) e 2fr (Lista) */
 .content {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
-  align-items: start;
+  align-items: start; /* Alinha os grids no topo */
 }
 
-/* Form Section */
+/* --- Seção do Formulário (Esquerda) --- */
 .form-section {
   background-color: var(--surface-color);
   padding: 2rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
+  /* 'position: sticky' faz o formulário "grudar" no topo ao rolar a lista */
+  /* Esta era a funcionalidade que removemos anteriormente */
   top: 100px;
 }
 
@@ -39,6 +43,7 @@
   color: var(--text-primary);
 }
 
+/* Estilo base para todos os campos de entrada */
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -49,6 +54,7 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+/* Efeito de foco (outline) sutil */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -57,18 +63,21 @@
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+/* Classe de erro (adicionada via JS) */
 .form-group input.error,
 .form-group select.error,
 .form-group textarea.error {
   border-color: var(--error-color);
 }
 
+/* Mensagem de erro (escondida por padrão) */
 .error-message {
   color: var(--error-color);
   font-size: 0.75rem;
   display: none;
 }
 
+/* Classe 'show' (adicionada via JS) torna a mensagem visível */
 .error-message.show {
   display: block;
 }
@@ -79,7 +88,7 @@
   margin-top: 0.5rem;
 }
 
-/* List Section */
+/* --- Seção da Lista (Direita) --- */
 .list-section {
   background-color: var(--surface-color);
   padding: 2rem;
@@ -92,7 +101,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
   gap: 1rem;
 }
 
@@ -115,7 +124,7 @@
   min-width: 200px;
 }
 
-/* Messages */
+/* --- Mensagens (Loading, Error, Success) --- */
 .loading-message,
 .error-message-box,
 .success-message-box {
@@ -142,9 +151,10 @@
   border: 1px solid #bbf7d0;
 }
 
-/* Books Grid */
+/* --- Grid de Livros --- */
 .books-grid {
   display: grid;
+  /* Cria colunas responsivas: preenche com colunas de no mín. 300px */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
@@ -156,7 +166,7 @@
   padding: 1.5rem;
   transition: all 0.2s;
   position: relative;
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.3s ease-out; /* Animação de entrada */
 }
 
 .book-card:hover {
@@ -185,6 +195,7 @@
   flex-wrap: wrap;
 }
 
+/* "Tags" de Ano e Gênero */
 .book-meta-item {
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
@@ -193,13 +204,14 @@
   color: var(--text-secondary);
 }
 
+/* Truque CSS para truncar a descrição em 3 linhas */
 .book-description {
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin-bottom: 1rem;
   line-height: 1.5;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 3; /* Número de linhas */
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -216,7 +228,7 @@
   font-size: 0.75rem;
 }
 
-/* Empty State */
+/* --- Estado Vazio (Sem livros) --- */
 .empty-state {
   text-align: center;
   padding: 3rem 1rem;
@@ -227,15 +239,16 @@
   margin-bottom: 0.5rem;
 }
 
-/* Responsive Design (Index) */
+/* --- Design Responsivo (Index) --- */
+/* Para tablets e telas menores (<= 768px) */
 @media (max-width: 768px) {
   .content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Empilha as colunas (formulário em cima) */
     gap: 1.5rem;
   }
 
   .form-section {
-    position: static;
+    position: static; /* Remove o 'sticky' em telas menores */
   }
 
   .list-header {
@@ -248,26 +261,27 @@
   }
 
   .search-box input {
-    flex: 1;
+    flex: 1; /* Faz o input preencher o espaço */
     min-width: auto;
   }
 
   .books-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Apenas uma coluna de cards */
   }
 
   .form-actions {
-    flex-direction: column;
+    flex-direction: column; /* Empilha os botões do formulário */
   }
 
   .book-actions {
-    flex-direction: column;
+    flex-direction: column; /* Empilha os botões do card (Editar/Excluir) */
   }
 }
 
+/* Para celulares (<= 480px) */
 @media (max-width: 480px) {
   .form-section,
   .list-section {
-    padding: 1.5rem;
+    padding: 1.5rem; /* Menor padding */
   }
 }

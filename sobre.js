@@ -7,7 +7,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // --- A. SELEÇÃO DOS ELEMENTOS ---
 
-  // Seleciona todos os cards que, quando clicados, abrem o modal
+  // Seleciona TODOS os cards com a classe .team-member
   const teamMembers = document.querySelectorAll(".team-member");
 
   // Seleciona os elementos principais do modal (o pop-up)
@@ -23,8 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- B. LÓGICA PARA ABRIR O MODAL ---
 
-  // Para cada card de membro, adiciona um "ouvinte de clique"
+  // Itera sobre cada card de membro encontrado
   teamMembers.forEach((memberCard) => {
+    // Adiciona um "ouvinte de clique" a CADA card
     memberCard.addEventListener("click", () => {
       // 1. Obtém os dados do card que foi clicado
       // O 'dataset' lê os atributos 'data-*' que você colocou no HTML
@@ -34,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const bioLong = memberCard.dataset.bioLong;
       const linkedin = memberCard.dataset.linkedin;
       const instagram = memberCard.dataset.instagram;
-      // Adicione mais (ex: data-github) se precisar
 
       // 2. Preenche o modal com os dados que pegamos
       modalName.textContent = name;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Verifica se o link do LinkedIn existe
       if (linkedin) {
-        // Cria um link (<a>)
+        // Cria um elemento <a> dinamicamente
         const linkElement = document.createElement("a");
         linkElement.href = linkedin;
         linkElement.textContent = "LinkedIn"; // Você pode trocar por um ícone
@@ -68,9 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalSocials.appendChild(linkElement);
       }
 
-      // (Repita o 'if' acima para outros links como 'github')
-
-      // 4. Finalmente, mostra o modal
+      // 4. Finalmente, mostra o modal adicionando a classe .show
       modal.classList.add("show");
     });
   });

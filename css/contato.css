@@ -1,8 +1,11 @@
+/* contato.css - Estilos da Página Contato */
+
 .contact-content {
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Layout de 2 colunas: Formulário (1fr) e Informações (1fr) */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10,6 +13,7 @@
   margin-bottom: 4rem;
 }
 
+/* Título compartilhado pelas seções */
 .contact-form-section h3,
 .contact-info-card h3,
 .social-media-card h3,
@@ -20,6 +24,7 @@
   color: var(--text-primary);
 }
 
+/* --- Seção do Formulário (Esquerda) --- */
 .contact-form {
   background-color: var(--surface-color);
   padding: 2rem;
@@ -48,9 +53,10 @@
   border-radius: var(--radius-md);
   font-size: 0.875rem;
   transition: border-color 0.2s, box-shadow 0.2s;
-  font-family: inherit;
+  font-family: inherit; /* Garante que a fonte seja a mesma do body */
 }
 
+/* Efeito de foco (outline) */
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
@@ -59,24 +65,11 @@
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-/* ESTILO ATUALIZADO PARA O TEXTAREA - IGUAL AO INDEX */
+/* Estilo unificado para o textarea */
 .contact-form textarea {
-  resize: vertical;
+  resize: vertical; /* Permite redimensionamento vertical */
   min-height: 120px;
-  /* Estilos adicionais para igualar ao textarea do index */
-  padding: 0.75rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  font-family: inherit;
   line-height: 1.5;
-}
-
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .contact-form .error-message {
@@ -87,6 +80,7 @@
   font-weight: 500;
 }
 
+/* --- Checkbox Customizado --- */
 .checkbox-group {
   margin-bottom: 2rem;
 }
@@ -99,10 +93,12 @@
   color: var(--text-primary);
 }
 
+/* Esconde o checkbox padrão do navegador */
 .checkbox-label input[type="checkbox"] {
   display: none;
 }
 
+/* A "caixinha" customizada */
 .checkmark {
   width: 20px;
   height: 20px;
@@ -113,11 +109,13 @@
   transition: all 0.3s;
 }
 
+/* Estilo do checkmark quando marcado */
 .checkbox-label input[type="checkbox"]:checked + .checkmark {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
 }
 
+/* O "v" (check) dentro da caixa */
 .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
   content: "✓";
   position: absolute;
@@ -129,18 +127,21 @@
   font-weight: bold;
 }
 
+/* Botões do formulário */
 .form-actions {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
+/* --- Seção de Informações (Direita) --- */
 .contact-info-section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
+/* Estilo base para os cards da direita */
 .contact-info-card,
 .social-media-card,
 .faq-card {
@@ -151,6 +152,7 @@
   border: 1px solid var(--border-color);
 }
 
+/* Item de informação (Email, Telefone, etc.) */
 .contact-item {
   display: flex;
   align-items: flex-start;
@@ -182,6 +184,7 @@
   margin-bottom: 0.25rem;
 }
 
+/* Card de Redes Sociais */
 .social-media-card > p {
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
@@ -219,6 +222,7 @@
   font-size: 1.25rem;
 }
 
+/* Card de FAQ */
 .faq-item {
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
@@ -244,6 +248,7 @@
   font-size: 0.875rem;
 }
 
+/* --- Seção do Mapa --- */
 .map-section {
   text-align: center;
 }
@@ -255,6 +260,7 @@
   color: var(--text-primary);
 }
 
+/* Placeholder (substituído por um iframe no HTML) */
 .map-placeholder {
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
   border-radius: var(--radius-lg);
@@ -274,19 +280,10 @@
   margin-bottom: 1rem;
 }
 
-.map-content h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-}
+/* ... (outros estilos do placeholder) ... */
 
-.map-content p {
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-
-/* Animações (movidas do contato.js) */
+/* --- Animações (do contato.js) --- */
+/* Animação para a mensagem de feedback */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -298,19 +295,22 @@
   }
 }
 
+/* Classe injetada pelo JS na mensagem de feedback */
 .contact-message {
-  /* Classe injetada pelo contato.js */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   animation: slideDown 0.3s ease-out;
 }
 
-/* Responsive Design - Contato */
+/* --- Design Responsivo - Contato --- */
+/* Telas médias (<= 968px) */
 @media (max-width: 968px) {
+  /* Empilha o formulário e as informações */
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
+  /* Inverte a ordem: Informações (1) em cima, Formulário (2) embaixo */
   .contact-form-section {
     order: 2;
   }
@@ -320,6 +320,7 @@
   }
 }
 
+/* Tablets (<= 768px) */
 @media (max-width: 768px) {
   .contact-form {
     padding: 1.5rem;
@@ -331,6 +332,7 @@
     padding: 1.5rem;
   }
 
+  /* Empilha os botões do formulário */
   .form-actions {
     flex-direction: column;
   }
@@ -356,6 +358,7 @@
   }
 }
 
+/* Celulares (<= 480px) */
 @media (max-width: 480px) {
   .contact-form,
   .contact-info-card,
@@ -364,6 +367,7 @@
     padding: 1rem;
   }
 
+  /* Centraliza os itens de contato */
   .contact-item {
     flex-direction: column;
     text-align: center;

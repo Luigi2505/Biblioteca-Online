@@ -1,11 +1,14 @@
+/* sobre.css - Estilos da Página Sobre */
+
 .about-content {
-  max-width: 1000px;
+  max-width: 1000px; /* Container mais estreito para leitura */
   margin: 0 auto;
 }
 
+/* --- Seção de Introdução --- */
 .about-intro {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr; /* Texto maior, imagem menor */
   gap: 3rem;
   margin-bottom: 4rem;
   align-items: center;
@@ -31,6 +34,7 @@
   align-items: center;
 }
 
+/* Placeholder visual para a imagem */
 .image-placeholder {
   background: linear-gradient(135deg, var(--primary-color), #6366f1);
   color: white;
@@ -48,8 +52,10 @@
   font-weight: 500;
 }
 
+/* --- Seção Missão e Valores --- */
 .mission-values {
   display: grid;
+  /* Grid responsivo: colunas de 300px */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
@@ -65,6 +71,7 @@
   border: 1px solid var(--border-color);
 }
 
+/* Efeito 'hover' sutil nos cards */
 .mission-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
@@ -88,6 +95,7 @@
   line-height: 1.6;
 }
 
+/* --- Seção "O Que Oferecemos" --- */
 .features-section {
   margin-bottom: 4rem;
 }
@@ -139,6 +147,7 @@
   line-height: 1.6;
 }
 
+/* --- Seção da Equipe --- */
 .team-section {
   margin-bottom: 4rem;
 }
@@ -177,7 +186,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1rem; /* Centraliza o avatar */
   color: white;
 }
 
@@ -201,6 +210,7 @@
   font-size: 0.875rem;
 }
 
+/* --- Seção "Nossos Números" --- */
 .stats-section {
   margin-bottom: 4rem;
 }
@@ -239,6 +249,7 @@
   opacity: 0.9;
 }
 
+/* --- Seção Call to Action (CTA) --- */
 .cta-section {
   background-color: var(--surface-color);
   padding: 3rem;
@@ -259,7 +270,7 @@
   font-size: 1.125rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-  max-width: 600px;
+  max-width: 600px; /* Limita a largura do parágrafo */
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
@@ -272,37 +283,36 @@
   flex-wrap: wrap;
 }
 
-/* --- Estilos do Modal da Equipe --- */
+/* --- Estilos do Modal da Equipe (Pop-up) --- */
 
-/* Faz o card da equipe parecer clicável */
+/* Adiciona o cursor de 'link' ao card da equipe */
 .team-member {
   cursor: pointer;
-  /* (o resto dos seus estilos .team-member continua aqui) */
 }
 
-/* O fundo escuro que cobre a tela */
+/* O fundo escuro (overlay) que cobre a tela */
 .modal-overlay {
-  position: fixed;
+  position: fixed; /* Cobre a tela inteira */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex; /* Usamos flex para centralizar o modal */
+  background: rgba(0, 0, 0, 0.7); /* Preto translúcido */
+  display: flex; /* Usado para centralizar o conteúdo */
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1000; /* Fica acima de tudo, exceto o header */
 
-  /* Começa invisível */
+  /* Estado inicial: invisível */
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none; /* Não pode ser clicado quando invisível */
   transition: opacity 0.3s ease;
 }
 
-/* Classe que o JS vai adicionar para mostrar o modal */
+/* Classe 'show' (adicionada via JS) torna o modal visível */
 .modal-overlay.show {
   opacity: 1;
-  pointer-events: all;
+  pointer-events: all; /* Permite cliques (para fechar) */
 }
 
 /* A caixa branca do pop-up */
@@ -316,11 +326,12 @@
   position: relative;
   text-align: center;
 
-  /* Animação de entrada */
+  /* Animação de entrada (zoom) */
   transform: scale(0.9);
   transition: transform 0.3s ease;
 }
 
+/* Efeito de "zoom in" quando o modal aparece */
 .modal-overlay.show .modal-content {
   transform: scale(1);
 }
@@ -338,12 +349,13 @@
   line-height: 1;
 }
 
-/* Estilizando o conteúdo de dentro do modal */
+/* --- Conteúdo DENTRO do modal --- */
 .modal-content #modalAvatar {
   font-size: 4rem; /* Avatar maior */
   width: 100px;
   height: 100px;
   margin-bottom: 1rem;
+  /* (O avatar do modal herda o estilo .member-avatar, estes são overrides) */
 }
 
 .modal-content #modalName {
@@ -367,6 +379,7 @@
   margin-bottom: 2rem;
 }
 
+/* Container dos links sociais (preenchido via JS) */
 .modal-socials {
   display: flex;
   gap: 1.5rem;
@@ -384,8 +397,9 @@
   color: var(--primary-color);
 }
 
-/* Responsive Design - Sobre */
+/* --- Design Responsivo - Sobre --- */
 @media (max-width: 768px) {
+  /* Empilha a introdução */
   .about-intro {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -405,6 +419,7 @@
     padding: 2rem;
   }
 
+  /* Empilha as colunas de Missão e Features */
   .mission-values {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -420,6 +435,7 @@
     gap: 1.5rem;
   }
 
+  /* Números em 2 colunas */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -429,6 +445,7 @@
     padding: 2rem;
   }
 
+  /* Empilha os botões do CTA */
   .cta-buttons {
     flex-direction: column;
     align-items: center;
@@ -455,6 +472,7 @@
     font-size: 2rem;
   }
 
+  /* Números e Equipe em coluna única */
   .stats-grid {
     grid-template-columns: 1fr;
   }

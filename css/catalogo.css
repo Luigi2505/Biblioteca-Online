@@ -1,7 +1,6 @@
 /* catalogo.css - Estilos da Página do Catálogo */
 
-/* (Nota: O .hero desta página já está no base.css) */
-
+/* --- Caixa de Filtros --- */
 .catalog-filters {
   background-color: var(--surface-color);
   padding: 2rem;
@@ -23,13 +22,15 @@
   color: var(--text-primary);
 }
 
+/* Botões de Gênero */
 .genre-filters {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Permite quebra de linha */
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
+/* Botão de filtro individual */
 .genre-filter {
   padding: 0.5rem 1rem;
   border: 1px solid var(--border-color);
@@ -46,12 +47,14 @@
   background-color: var(--background-color);
 }
 
+/* Estado ativo (controlado via JS) */
 .genre-filter.active {
   background-color: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
 }
 
+/* Seção de Busca e Ordenação */
 .search-section {
   display: flex;
   gap: 1rem;
@@ -60,7 +63,6 @@
 }
 
 .search-box {
-  /* Estilo reutilizado do index, mas específico aqui */
   display: flex;
   gap: 0.5rem;
 }
@@ -91,8 +93,10 @@
   font-size: 0.875rem;
 }
 
+/* --- Estatísticas do Catálogo --- */
 .catalog-stats {
   display: grid;
+  /* Grid responsivo: colunas de 150px, preenchendo o espaço */
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
@@ -106,8 +110,8 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* Seletor mais específico para evitar conflito com 'sobre.css' */
 .stat-item .stat-number {
-  /* Seletor mais específico para evitar conflito com 'sobre.css' */
   display: block;
   font-size: 2rem;
   font-weight: 700;
@@ -116,18 +120,20 @@
 }
 
 .stat-item .stat-label {
-  /* Seletor mais específico */
   font-size: 0.875rem;
   color: var(--text-secondary);
 }
 
+/* --- Grid de Livros do Catálogo --- */
 .catalog-grid {
   display: grid;
+  /* Grid responsivo: colunas de no mín. 280px */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
+/* Card individual do catálogo */
 .catalog-card {
   background-color: var(--surface-color);
   border: 1px solid var(--border-color);
@@ -156,7 +162,7 @@
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.4;
-  flex: 1;
+  flex: 1; /* Permite que o título cresça */
   margin-right: 1rem;
 }
 
@@ -167,7 +173,7 @@
   border-radius: var(--radius-sm);
   font-size: 0.75rem;
   font-weight: 600;
-  white-space: nowrap;
+  white-space: nowrap; /* Impede que "⭐ 4.5" quebre a linha */
 }
 
 .catalog-author {
@@ -183,6 +189,7 @@
   flex-wrap: wrap;
 }
 
+/* "Tags" de Ano, Páginas, Gênero */
 .catalog-meta-item {
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
@@ -197,6 +204,7 @@
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.5;
+  /* (Aqui não tem o 'line-clamp' da index, a descrição é truncada no JS) */
 }
 
 .catalog-actions {
@@ -205,10 +213,11 @@
 }
 
 .catalog-actions .btn {
-  flex: 1;
+  flex: 1; /* Faz os botões ocuparem o mesmo espaço */
   justify-content: center;
 }
 
+/* --- Paginação --- */
 .pagination {
   display: flex;
   justify-content: center;
@@ -227,7 +236,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
-  min-width: 44px;
+  min-width: 44px; /* Tamanho mínimo para toque */
 }
 
 .pagination-btn:hover:not(:disabled) {
@@ -251,7 +260,8 @@
   color: var(--text-secondary);
 }
 
-/* Mensagens de Loading/Erro/Vazio específicas do catálogo */
+/* --- Mensagens de Loading/Erro/Vazio --- */
+/* (Classes genéricas para reutilização) */
 .message {
   padding: 1rem;
   border-radius: var(--radius-md);
@@ -273,12 +283,13 @@
   color: var(--text-secondary);
 }
 
-/* Responsive Design - Catálogo */
+/* --- Design Responsivo - Catálogo --- */
 @media (max-width: 768px) {
   .genre-filters {
     justify-content: center;
   }
 
+  /* Empilha a busca e a ordenação */
   .search-section {
     flex-direction: column;
     align-items: stretch;
@@ -298,10 +309,12 @@
     gap: 1rem;
   }
 
+  /* Estatísticas em uma única coluna */
   .catalog-stats {
     grid-template-columns: 1fr;
   }
 
+  /* Ajustes no card */
   .catalog-card-header {
     flex-direction: column;
     gap: 0.5rem;
@@ -315,6 +328,7 @@
     flex-direction: column;
   }
 
+  /* Paginação menor */
   .pagination {
     gap: 0.25rem;
   }
@@ -340,6 +354,7 @@
     font-size: 0.75rem;
   }
 
+  /* Grid do catálogo vira coluna única */
   .catalog-grid {
     grid-template-columns: 1fr;
   }
