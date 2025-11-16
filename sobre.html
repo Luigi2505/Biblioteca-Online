@@ -152,41 +152,77 @@
           <div class="team-section">
             <h3>Nossa Equipe</h3>
             <div class="team-grid">
-              <div class="team-member">
+              <div
+                class="team-member"
+                data-name="Luigi Bilyk"
+                data-role="Fundador & Diretor"
+                data-avatar="👨‍💼"
+                data-bio-long="Com mais de 15 anos de experiência como bibliotecário e uma paixão por tecnologia, Luigi é o visionário por trás da Biblioteca Online. 
+                Ele sonhava em criar um espaço onde o conhecimento fosse acessível a todos, a qualquer hora. 
+                Sua liderança guia a equipe na missão de democratizar a leitura no Brasil."
+                data-linkedin="https://www.linkedin.com/in/luigi-bilyk"
+                data-instagram="https://www.instagram.com/luigi.bilyk"
+              >
                 <div class="member-avatar">👨‍💼</div>
                 <h4>Luigi Bilyk</h4>
                 <p class="member-role">Fundador & Diretor</p>
                 <p class="member-bio">
-                  Bibliotecário com 15 anos de experiência, apaixonado por
-                  tecnologia.
+                  Bibliotecário com 15 anos de experiência...
                 </p>
               </div>
 
-              <div class="team-member">
-                <div class="member-avatar">👨‍💻</div>
-                <h4>Eric Juan</h4>
-                <p class="member-role">Desenvolvedor Líder</p>
+              <div
+                class="team-member"
+                data-name="Eric Juan Morais"
+                data-role="Co-Fundador & Diretor de Produto"
+                data-avatar="👨‍💼"
+                data-bio-long="Eric é obcecado pela experiência do usuário. Com formação em Design e Interação, 
+                ele é quem planeja cada tela, botão e funcionalidade que você usa. 
+                Seu foco é garantir que a plataforma não seja apenas poderosa, mas também intuitiva, acessível e agradável de navegar"
+                data-linkedin="https://www.linkedin.com/in/ericjuandm"
+                data-instagram="https://www.instagram.com/ericjuandm"
+              >
+                <div class="member-avatar">👨‍💼</div>
+                <h4>Eric Juan Morais</h4>
+                <p class="member-role">Co-Fundador & Diretor de Produto</p>
                 <p class="member-bio">
-                  Especialista em UX/UI e desenvolvimento de plataformas
-                  educacionais.
+                  Eric é obcecado pela experiência do usuário...
                 </p>
               </div>
 
-              <div class="team-member">
-                <div class="member-avatar">👨‍🎓</div>
+              <div
+                class="team-member"
+                data-name="Pedro Henrique Junqueira"
+                data-role="Co-Fundador & Curador-Chefe"
+                data-avatar="👨‍💼"
+                data-bio-long="Pedro é o coração do nosso acervo. Como especialista em literatura e gerenciamento de conteúdo, ele lidera a equipe de curadoria, 
+                negociando com editoras e autores para trazer os melhores e mais diversos títulos para a plataforma. 
+                Se um livro incrível está em nossa coleção, foi ele quem o encontrou."
+                data-linkedin="https://www.linkedin.com/in/pedrohenriquejc"
+                data-instagram="https://www.instagram.com/pedrohjc_"
+              >
+                <div class="member-avatar">👨‍💼</div>
                 <h4>Pedro Henrique Junqueira</h4>
-                <p class="member-role">Curador de Conteúdo</p>
-                <p class="member-bio">
-                  Crítico literário responsável pela seleção do nosso acervo.
-                </p>
+                <p class="member-role">Co-Fundador & Curador-Chefe</p>
+                <p class="member-bio">Pedro é o coração do nosso acervo...</p>
               </div>
 
-              <div class="team-member">
-                <div class="member-avatar">🤵</div>
+              <div
+                class="team-member"
+                data-name="Guilherme Zamboni"
+                data-role="Co-Fundador & Diretor de Tecnologia"
+                data-avatar="👨‍💼"
+                data-bio-long="Guilherme é o arquiteto da nossa plataforma. Como Engenheiro de Software Sênior, 
+                ele é o responsável por transformar a visão da equipe em um sistema robusto, rápido e seguro. 
+                Ele lidera o time de desenvolvimento, garantindo que sua experiência de leitura seja impecável e acessível em qualquer dispositivo."
+                data-linkedin="https://www.linkedin.com/in/guizmb"
+                data-instagram="https://www.instagram.com/guizmb"
+              >
+                <div class="member-avatar">👨‍💼</div>
                 <h4>Guilherme Zamboni</h4>
-                <p class="member-role">Gerente de Comunidade</p>
+                <p class="member-role">Co-Fundador & Diretor de Tecnologia</p>
                 <p class="member-bio">
-                  Conecta leitores e autores, promovendo eventos e discussões.
+                  Guilherme é o arquiteto da nossa plataforma...
                 </p>
               </div>
             </div>
@@ -230,12 +266,22 @@
       </div>
     </main>
 
+    <div id="teamModal" class="modal-overlay">
+      <div class="modal-content">
+        <button id="modalClose" class="modal-close">&times;</button>
+        <div id="modalAvatar" class="member-avatar"></div>
+        <h3 id="modalName"></h3>
+        <p id="modalRole"></p>
+        <p id="modalBio"></p>
+        <div id="modalSocials" class="modal-socials"></div>
+      </div>
+    </div>
+
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2024 Biblioteca Online. Todos os direitos reservados.</p>
+        <p>© 2025 Biblioteca Online. Todos os direitos reservados.</p>
       </div>
     </footer>
-
     <script src="sobre.js"></script>
   </body>
 </html>

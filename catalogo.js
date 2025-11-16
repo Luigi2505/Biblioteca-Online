@@ -1,9 +1,3 @@
-/**
- * Catálogo de Livros - Biblioteca Online
- * Sistema de visualização e filtragem de livros
- */
-
-// Estado global
 let catalogBooks = [];
 let filteredBooks = [];
 let currentPage = 1;
@@ -11,7 +5,6 @@ let booksPerPage = 12;
 let currentGenre = "all";
 let currentSort = "title";
 
-// Elementos DOM
 const elements = {
   catalogBooks: document.getElementById("catalogBooks"),
   catalogLoading: document.getElementById("catalogLoading"),
@@ -27,38 +20,26 @@ const elements = {
   totalGenres: document.getElementById("totalGenres"),
 };
 
-// Configuração da API
 const API_BASE_URL = "https://jsonplaceholder.typicode.com/posts";
 
-// Inicialização
 document.addEventListener("DOMContentLoaded", () => {
   loadCatalogBooks();
   setupCatalogEventListeners();
 });
 
-/**
- * Configura os event listeners do catálogo
- */
 function setupCatalogEventListeners() {
-  // Busca
   elements.catalogSearch.addEventListener("input", handleCatalogSearch);
   elements.searchCatalogBtn.addEventListener("click", handleCatalogSearch);
 
-  // Ordenação
   elements.sortSelect.addEventListener("change", handleSort);
 
-  // Filtros de gênero
   document.querySelectorAll(".genre-filter").forEach((btn) => {
     btn.addEventListener("click", handleGenreFilter);
   });
 
-  // Limpar filtros
   elements.clearFilters.addEventListener("click", clearAllFilters);
 }
 
-/**
- * Carrega os livros do catálogo
- */
 async function loadCatalogBooks() {
   showCatalogLoading(true);
   hideCatalogMessages();
@@ -72,7 +53,6 @@ async function loadCatalogBooks() {
 
     const data = await response.json();
 
-    // Transformar dados e expandir para mais variedade
     catalogBooks = data.slice(0, 50).map((item, index) => ({
       id: item.id,
       title: item.title,
@@ -102,9 +82,6 @@ async function loadCatalogBooks() {
   }
 }
 
-/**
- * Gera nomes de autores variados
- */
 function generateAuthor(index) {
   const authors = [
     "Machado de Assis",
@@ -131,9 +108,6 @@ function generateAuthor(index) {
   return authors[index % authors.length];
 }
 
-/**
- * Renderiza o catálogo
- */
 function renderCatalog() {
   const startIndex = (currentPage - 1) * booksPerPage;
   const endIndex = startIndex + booksPerPage;
@@ -156,9 +130,6 @@ function renderCatalog() {
   renderPagination();
 }
 
-/**
- * Cria o HTML de um card do catálogo
- */
 function createCatalogCard(book) {
   const genreLabels = {
     ficcao: "Ficção",
@@ -208,9 +179,6 @@ function createCatalogCard(book) {
     `;
 }
 
-/**
- * Renderiza a paginação
- */
 function renderPagination() {
   const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
 
@@ -221,7 +189,6 @@ function renderPagination() {
 
   let paginationHTML = "";
 
-  // Botão anterior
   paginationHTML += `
         <button class="pagination-btn" ${currentPage === 1 ? "disabled" : ""} 
                 onclick="changePage(${currentPage - 1})">
@@ -229,7 +196,6 @@ function renderPagination() {
         </button>
     `;
 
-  // Números de página
   for (let i = 1; i <= totalPages; i++) {
     if (
       i === 1 ||
@@ -249,7 +215,6 @@ function renderPagination() {
     }
   }
 
-  // Botão próximo
   paginationHTML += `
         <button class="pagination-btn" ${
           currentPage === totalPages ? "disabled" : ""
@@ -262,9 +227,6 @@ function renderPagination() {
   elements.pagination.innerHTML = paginationHTML;
 }
 
-/**
- * Manipula a busca no catálogo
- */
 function handleCatalogSearch() {
   const searchTerm = elements.catalogSearch.value.toLowerCase().trim();
 
@@ -292,18 +254,12 @@ function handleCatalogSearch() {
   updateStats();
 }
 
-/**
- * Manipula a ordenação
- */
 function handleSort() {
   currentSort = elements.sortSelect.value;
   applySorting();
   renderCatalog();
 }
 
-/**
- * Aplica a ordenação atual
- */
 function applySorting() {
   switch (currentSort) {
     case "title":
@@ -321,25 +277,17 @@ function applySorting() {
   }
 }
 
-/**
- * Manipula o filtro de gênero
- */
 function handleGenreFilter(event) {
-  // Remove classe active de todos os botões
   document.querySelectorAll(".genre-filter").forEach((btn) => {
     btn.classList.remove("active");
   });
 
-  // Adiciona classe active ao botão clicado
   event.target.classList.add("active");
 
   currentGenre = event.target.dataset.genre;
   handleCatalogSearch();
 }
 
-/**
- * Limpa todos os filtros
- */
 function clearAllFilters() {
   elements.catalogSearch.value = "";
   elements.sortSelect.value = "title";
@@ -359,9 +307,6 @@ function clearAllFilters() {
   updateStats();
 }
 
-/**
- * Muda a página atual
- */
 function changePage(page) {
   const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
 
@@ -372,13 +317,9 @@ function changePage(page) {
   currentPage = page;
   renderCatalog();
 
-  // Rola para o topo da lista
   elements.catalogBooks.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-/**
- * Atualiza as estatísticas
- */
 function updateStats() {
   elements.totalBooks.textContent = filteredBooks.length;
 
@@ -389,9 +330,6 @@ function updateStats() {
   elements.totalGenres.textContent = uniqueGenres.size;
 }
 
-/**
- * Ver detalhes do livro
- */
 function viewBookDetails(bookId) {
   const book = catalogBooks.find((b) => b.id === bookId);
   if (book) {
@@ -401,9 +339,6 @@ function viewBookDetails(bookId) {
   }
 }
 
-/**
- * Reservar livro
- */
 function reserveBook(bookId) {
   const book = catalogBooks.find((b) => b.id === bookId);
   if (book) {
@@ -413,9 +348,6 @@ function reserveBook(bookId) {
   }
 }
 
-/**
- * Mostra/esconde loading do catálogo
- */
 function showCatalogLoading(show) {
   if (show) {
     elements.catalogLoading.style.display = "block";
@@ -425,26 +357,17 @@ function showCatalogLoading(show) {
   }
 }
 
-/**
- * Mostra mensagem de erro do catálogo
- */
 function showCatalogError(message) {
   elements.catalogError.innerHTML = `<p>${message}</p>`;
   elements.catalogError.style.display = "block";
   elements.catalogBooks.style.display = "none";
 }
 
-/**
- * Esconde mensagens do catálogo
- */
 function hideCatalogMessages() {
   elements.catalogError.style.display = "none";
   elements.catalogEmpty.style.display = "none";
 }
 
-/**
- * Escapa HTML para prevenir XSS
- */
 function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;

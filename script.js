@@ -150,10 +150,10 @@ function createBookCard(book) {
             
             <div class="book-actions">
                 <button class="btn btn-warning" onclick="editBook(${book.id})">
-                    ✏️ Editar
+                     Editar
                 </button>
                 <button class="btn btn-danger" onclick="deleteBook(${book.id})">
-                    🗑️ Excluir
+                     Excluir
                 </button>
             </div>
         </div>
